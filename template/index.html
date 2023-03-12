@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <h1 class='text-center text-muted mb-3'>SMART CELL</h1>
+    <td class="btn-container">
+        <a href="{{url_for('tambah')}}" class="btn btn-success">+Add Item</a>
+        <a href="{{url_for('logout')}}" class="btn btn-danger">Logout</a>
+    </td>
+    <p></p>
+    <table class='table table-bordered'>
+    <thead>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Harga</th>
+        <th>Rating</th>
+        <th>ID Produk</th>
+        <th>Stok</th>
+        <th>Terjual</th>
+        <th>Asal</th>
+        <th>Kategori</th>
+        <th>Ubah</th>
+        <th>Hapus</th>
+    </thead>
+    <tbody>
+        {% for baris in data %}
+        <tr>
+            <td>{{ baris[0] }}</td>
+            <td>{{ baris[1] }}</td>
+            <td>{{ baris[2] }}</td>
+            <td>{{ baris[3] }}</td>
+            <td>{{ baris[4] }}</td>
+            <td>{{ baris[5] }}</td>
+            <td>{{ baris[6] }}</td>
+            <td>{{ baris[7] }}</td>
+            <td>{{ baris[8] }}</td>
+            <td><a href='{{url_for("edit",id=baris[0])}}' class='btn btn-primary'>Edit</a></td>
+            <td><a href='{{url_for("delete",id=baris[0])}}' class='btn btn-danger' onclick='return confirm("Are You Sure?")'>Delete</a></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+    </table>
+{% endblock %}
